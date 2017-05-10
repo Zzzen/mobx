@@ -97,7 +97,7 @@ test('test1', function(t) {
     t.end();
 })
 
-test('array should support iterall / iterable ', t => {
+test('array should support iterall / iterable / concatSpreadable', t => {
 	var a = observable([1,2,3])
 
 	t.equal(iterall.isIterable(a), true);
@@ -117,6 +117,9 @@ test('array should support iterall / iterable ', t => {
 	a.replace([])
 	iter = iterall.getIterator(a)
 	t.deepEqual(iter.next(), { value: undefined, done: true })
+
+    var a2 = mobx.observable([3, 4])
+    t.deepEqual([1, 2].concat(a2), [1, 2, 3, 4])
 
 	t.end()
 })

@@ -78,6 +78,8 @@ let OBSERVABLE_ARRAY_BUFFER_SIZE = 0;
 export class StubArray {
 }
 StubArray.prototype = [];
+declare var Symbol;
+StubArray.prototype[(typeof Symbol === "function" && Symbol.isConcatSpreadable) || "@@isConcatSpreadable"] = true;
 
 class ObservableArrayAdministration<T> implements IInterceptable<IArrayWillChange<T> | IArrayWillSplice<T>>, IListenable {
 	atom: BaseAtom;
